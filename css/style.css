@@ -7,7 +7,6 @@
   --pink: #f42a91;
   --green: #33fd1d;
   --gray: #444;
-  --link: #00e;
 
   --f-display: "Open Sans", "Arial Narrow", sans-serif;
   --f-sans: "Inter", system-ui, sans-serif;
@@ -112,7 +111,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   padding: 0 calc(30 * var(--u));
   font: 400 calc(26 * var(--u))/1 var(--f-sans);
   letter-spacing: .02em; text-transform: uppercase;
-  color: var(--link);
+  color: var(--ink);
   text-decoration: none;
 }
 .hero__read:hover { text-decoration: underline; }
