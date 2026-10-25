@@ -34,10 +34,10 @@
 | Файл | Слой в Figma |
 |------|--------------|
 | `hero-hands.png` | 00 — Hero → Image (Две руки тянутся друг к другу) |
-| `want-negroni.png` | 01 → Image (Бутылка негрони…) |
-| `want-hands.png` | 01 → Image (Сплетённые руки…) |
-| `want-tire.png` | 01 → Image (Гоночная шина…) |
-| `measure-empty.png` | 02 → Container (фон плашки «Пустые») |
+| `want-negroni.jpg` | 01 → Image (Бутылка негрони…) |
+| `want-hands.jpg` | 01 → Image (Сплетённые руки…) |
+| `want-tire.jpg` | 01 → Image (Гоночная шина…) |
+| `measure-empty.jpg` | 02 → Container (фон плашки «Пустые») |
 
 ## Стек
 

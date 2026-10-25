@@ -146,7 +146,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .measure__bar--empty {
   flex: 1 1 0;
   height: calc(208 * var(--u));
-  background: url("../images/measure-empty.png") center / cover no-repeat;
+  background: url("../images/measure-empty.jpg") center / cover no-repeat;
 }
 .measure__bar--empty span {
   padding: calc(4 * var(--u)) calc(14 * var(--u)) calc(6 * var(--u));
