@@ -7,6 +7,10 @@
   --pink: #f42a91;
   --green: #33fd1d;
   --gray: #444;
+  --cyan: #1dfdfd;
+  --strike: #7a7a7a;
+  --paper: #fff;
+  --ink-dark: #333;
 
   --f-display: "Open Sans", "Arial Narrow", sans-serif;
   --f-sans: "Inter", system-ui, sans-serif;
@@ -21,9 +25,13 @@ body { background: var(--bg); color: var(--ink); font-family: var(--f-sans); -we
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
 
 /* Open Sans Condensed ExtraBold from the mockup */
-.display, .hero__title, .headline, .measure__label, .measure__bar {
+.display, .hero__title, .headline, .measure__label, .measure__bar, .slice__count, .signs__list b {
   font-family: var(--f-display);
   font-stretch: 75%;
   font-weight: 800;
@@ -31,16 +39,17 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 }
 
 /*
-  Desktop blocks are composed on a 1440 × 900 artboard.
+  Desktop blocks are composed on a 1440-wide artboard (height: --h, 900 by default).
   1u = 1px of the mockup, scaled to the viewport and capped at 1440.
 */
 .hero, .block { container-type: inline-size; background: var(--bg); color: var(--ink); }
+.block--light { background: var(--paper); color: #000; }
 .hero, .stage { --u: calc(min(100cqw, 1440px) / 1440); }
 
 .stage {
   position: relative;
   max-width: 1440px;
-  height: calc(900 * var(--u));
+  height: calc(var(--h, 900) * var(--u));
   margin: 0 auto;
   overflow: hidden;
 }
@@ -49,17 +58,18 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 /* ---------- shared: headline with marker ---------- */
 .headline {
   display: flex; flex-direction: column; align-items: flex-start;
-  gap: calc(10 * var(--u));
-  font-size: calc(170 * var(--u));
+  gap: calc(var(--gap, 10) * var(--u));
+  font-size: calc(var(--size, 170) * var(--u));
   line-height: .9;
-  letter-spacing: -.03em;
+  letter-spacing: var(--track, -.03em);
   white-space: nowrap;
 }
 .headline__mark {
-  padding: calc(4 * var(--u)) calc(22 * var(--u)) calc(10 * var(--u));
+  padding: calc(4 * var(--u)) calc(var(--pad, 22) * var(--u)) calc(10 * var(--u));
   color: #000;
 }
 .headline__mark--pink { background: var(--pink); }
+.headline__mark--yellow { background: var(--yellow); }
 
 /* ---------- shared: quote ---------- */
 .quote blockquote {
@@ -71,7 +81,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   margin-top: calc(8 * var(--u));
   font: 700 max(12px, calc(16 * var(--u)))/1.5 var(--f-display);
   letter-spacing: .06em; text-transform: uppercase;
-  color: var(--pink);
+  color: var(--accent, var(--pink));
 }
 .quote--mono blockquote { font: 400 max(15px, calc(22 * var(--u)))/1.6 var(--f-mono); }
 .quote--mono figcaption {
@@ -161,14 +171,69 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 }
 .measure__quote { left: calc(40 * var(--u)); top: calc(720 * var(--u)); width: calc(520 * var(--u)); }
 
+/* ---------- 03 — ДЕСЯТЫЙ КУСОК ---------- */
+.slice__plate { left: calc(395 * var(--u)); top: calc(149 * var(--u)); width: calc(700 * var(--u)); aspect-ratio: 1; background: var(--pink); }
+.slice__pie   { left: calc(450 * var(--u)); top: calc(204 * var(--u)); width: calc(590 * var(--u)); height: auto; aspect-ratio: 1; object-fit: contain; }
+.slice__more {
+  width: calc(220 * var(--u)); aspect-ratio: 1;
+  padding: calc(20 * var(--u));
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink) 45%, #fff 100%);
+}
+.slice__more img { width: 100%; height: 100%; object-fit: contain; }
+.slice__more--top    { left: calc(823 * var(--u)); top: calc(33 * var(--u)); }
+.slice__more--bottom { left: calc(986 * var(--u)); top: calc(694 * var(--u)); }
+.slice__count {
+  left: calc(112 * var(--u)); top: calc(402 * var(--u));
+  display: flex; align-items: center;
+  height: calc(360 * var(--u));
+  font-size: calc(400 * var(--u)); line-height: 1;
+  letter-spacing: -.04em;
+  color: var(--yellow);
+}
+.slice__title { left: calc(99 * var(--u)); top: calc(773 * var(--u)); --size: 124; --gap: 8; --pad: 20; }
+.slice__text {
+  left: calc(100 * var(--u)); top: calc(1040 * var(--u));
+  width: calc(500 * var(--u));
+  font: 400 max(15px, calc(22 * var(--u)))/1.5 var(--f-sans);
+  color: var(--ink-dark);
+}
+
+/* ---------- 04 — ТВОИ ЖЕЛАНИЯ КУПЛЕНЫ ---------- */
+.bought__img { object-fit: cover; max-width: none; }
+.bought__img--couple { left: calc(552 * var(--u)); top: calc(220 * var(--u)); width: calc(829 * var(--u)); height: calc(612 * var(--u)); }
+.bought__img--tag    { left: calc(-57 * var(--u)); top: calc(117 * var(--u)); width: calc(575 * var(--u)); height: calc(425 * var(--u)); }
+.bought__title { left: calc(62 * var(--u)); top: calc(573 * var(--u)); --size: 120; --pad: 20; --track: -.02em; }
+.bought__quote { left: calc(62 * var(--u)); top: calc(848 * var(--u)); width: calc(520 * var(--u)); }
+
+/* ---------- 05 — МЫ ПОТРЕБЛЯЕМ ЗНАКИ ---------- */
+.signs { --accent: var(--cyan); }
+.signs__receipt { max-width: none; height: auto; }
+.signs__receipt--green  { left: calc(241 * var(--u)); top: calc(-19 * var(--u)); width: calc(431 * var(--u)); }
+.signs__receipt--pink   { left: calc(223 * var(--u)); top: calc(685 * var(--u)); width: calc(337 * var(--u)); }
+.signs__receipt--yellow { left: calc(837 * var(--u)); top: calc(318 * var(--u)); width: calc(426 * var(--u)); }
+.signs__list {
+  left: calc(440 * var(--u)); top: calc(478 * var(--u));
+  display: flex; flex-direction: column; gap: calc(20 * var(--u));
+}
+.signs__list li {
+  display: flex; align-items: center; gap: calc(14 * var(--u));
+  white-space: nowrap;
+}
+.signs__list s, .signs__arrow {
+  font: 400 max(14px, calc(22 * var(--u)))/1.3 var(--f-display);
+}
+.signs__list s { color: var(--strike); }
+.signs__arrow { color: var(--cyan); }
+.signs__list b { font-size: max(18px, calc(30 * var(--u))); line-height: 1.3; }
+.signs__quote { left: calc(440 * var(--u)); top: calc(788 * var(--u)); width: calc(330 * var(--u)); }
+
 /* ---------- mobile: artboard turns into a flow ---------- */
 @media (max-width: 899px) {
   .stage { --u: 1px; height: auto; padding: 72px var(--gutter); }
   .stage > * { position: static; inset: auto; }
 
   .headline {
-    --fit: calc((100vw - 2 * var(--gutter)) / 4.9);
-    font-size: var(--fit);
+    font-size: calc((100vw - 2 * var(--gutter)) / var(--ratio, 4.9));
     gap: 6px;
   }
   .headline__mark { padding: 2px 10px 6px; }
@@ -207,6 +272,40 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .measure__bar--empty span { padding: 3px 12px 5px; font-size: 22px; }
   .measure__text { width: auto; margin-top: 40px; font-size: 17px; }
   .measure__quote { width: auto; margin-top: 40px; }
+
+  /* 03: the plate stays a collage, drawn on a 375-wide grid */
+  .slice .stage { --m: calc(100cqw / 375); padding-top: calc(310 * var(--m)); }
+  .slice .stage > :is(.slice__plate, .slice__pie, .slice__more, .slice__count) { position: absolute; }
+  .slice__plate { left: calc(56 * var(--m)); top: calc(56 * var(--m)); width: calc(280 * var(--m)); }
+  .slice__pie   { left: calc(76 * var(--m)); top: calc(76 * var(--m)); width: calc(240 * var(--m)); }
+  .slice__more  { width: calc(100 * var(--m)); padding: calc(9 * var(--m)); }
+  .slice__more--top    { left: calc(246 * var(--m)); top: calc(16 * var(--m)); }
+  .slice__more--bottom { left: calc(268 * var(--m)); top: calc(206 * var(--m)); }
+  .slice__count { left: calc(12 * var(--m)); top: calc(110 * var(--m)); height: auto; font-size: calc(190 * var(--m)); }
+  .slice__title { --ratio: 6.8; position: relative; }
+  .slice__text  { width: auto; margin-top: 24px; font-size: 17px; }
+
+  /* 04 */
+  .bought .stage { display: grid; }
+  .bought__img { height: auto !important; }
+  .bought__img--tag    { order: -1; width: 80%; margin-left: calc(-1 * var(--gutter)); aspect-ratio: 575 / 425; }
+  .bought__img--couple { width: 90%; justify-self: end; margin-top: -24px; aspect-ratio: 829 / 612; }
+  .bought__title { --ratio: 6.7; position: relative; margin-top: -40px; }
+  .bought__quote { width: auto; margin-top: 32px; }
+
+  /* 05 */
+  .signs .stage {
+    display: grid; grid-template-columns: 1fr 1fr;
+    column-gap: 12px; align-items: end;
+  }
+  .signs__receipt--green  { grid-area: 1 / 1 / 2 / 3; width: 60%; justify-self: center; }
+  .signs__list   { grid-area: 2 / 1 / 3 / 3; margin-top: 40px; gap: 14px; }
+  .signs__list li { flex-wrap: wrap; gap: 4px 10px; white-space: normal; }
+  .signs__list s, .signs__arrow { font-size: 16px; }
+  .signs__list b { font-size: 22px; }
+  .signs__quote  { grid-area: 3 / 1 / 4 / 3; width: auto; margin-top: 32px; }
+  .signs__receipt--pink   { grid-area: 4 / 1; width: 100%; margin-top: 40px; }
+  .signs__receipt--yellow { grid-area: 4 / 2; width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
