@@ -18,7 +18,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--bg); color: var(--ink); scroll-behavior: smooth; }
-body { font-family: var(--f-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
@@ -35,7 +35,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   Desktop blocks are composed on a 1440 × 900 artboard.
   1u = 1px of the mockup, scaled to the viewport and capped at 1440.
 */
-.hero, .block { container-type: inline-size; }
+.hero, .block { container-type: inline-size; background: var(--bg); color: var(--ink); }
 .hero, .stage { --u: calc(min(100cqw, 1440px) / 1440); }
 
 .stage {
