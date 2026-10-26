@@ -17,17 +17,17 @@
     observer.disconnect();
 
     requestAnimationFrame(() => requestAnimationFrame(async () => {
-      await wait(125);
+      await wait(62);
       for (const item of items) {
         item.classList.add('is-visible');
-        await wait(180);
+        await wait(90);
 
         if (item.classList.contains('duty__undone')) {
           item.classList.add('is-struck');
-          await wait(365);
+          await wait(182);
         } else {
           item.classList.add('is-checked');
-          await wait(210);
+          await wait(105);
         }
       }
 
