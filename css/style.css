@@ -182,14 +182,20 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 /* ---------- 03 — ДЕСЯТЫЙ КУСОК ---------- */
 .slice__plate { left: calc(395 * var(--u)); top: calc(149 * var(--u)); width: calc(700 * var(--u)); aspect-ratio: 1; background: var(--pink); }
 .slice__pie   { left: calc(450 * var(--u)); top: calc(204 * var(--u)); width: calc(590 * var(--u)); height: auto; aspect-ratio: 1; object-fit: contain; }
-.slice__more {
-  width: calc(220 * var(--u)); aspect-ratio: 1;
-  padding: calc(20 * var(--u));
+/* the swarm: ten more pieces land one by one (js/slice.js); 1k = 1px of the layout's grid */
+.slice__swarm { left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; --k: var(--u); }
+.slice__sq {
+  position: absolute;
+  left: calc(var(--x) * var(--k)); top: calc(var(--y) * var(--k));
+  width: calc(var(--s) * var(--k)); aspect-ratio: 1;
+  padding: calc(var(--s) * .09 * var(--k));
   background: linear-gradient(135deg, var(--pink) 0%, var(--pink) 45%, #fff 100%);
+  opacity: 0;
+  transform: scale(.4) rotate(var(--r, 0deg));
+  transition: opacity .25s ease-out, transform .45s cubic-bezier(.2, 1.5, .4, 1);
 }
-.slice__more img { width: 100%; height: 100%; object-fit: contain; }
-.slice__more--top    { left: calc(823 * var(--u)); top: calc(33 * var(--u)); }
-.slice__more--bottom { left: calc(986 * var(--u)); top: calc(694 * var(--u)); }
+.slice__sq.is-on { opacity: 1; transform: none; }
+.slice__sq img { width: 100%; height: 100%; object-fit: contain; }
 .slice__count {
   left: calc(112 * var(--u)); top: calc(402 * var(--u));
   display: flex; align-items: center;
@@ -440,12 +446,10 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 
   /* 03: the plate stays a collage, drawn on a 375-wide grid */
   .slice .stage { --m: calc(100cqw / 375); padding-top: calc(310 * var(--m)); }
-  .slice .stage > :is(.slice__plate, .slice__pie, .slice__more, .slice__count) { position: absolute; }
+  .slice .stage > :is(.slice__plate, .slice__pie, .slice__swarm, .slice__count) { position: absolute; }
   .slice__plate { left: calc(56 * var(--m)); top: calc(56 * var(--m)); width: calc(280 * var(--m)); }
   .slice__pie   { left: calc(76 * var(--m)); top: calc(76 * var(--m)); width: calc(240 * var(--m)); }
-  .slice__more  { width: calc(100 * var(--m)); padding: calc(9 * var(--m)); }
-  .slice__more--top    { left: calc(246 * var(--m)); top: calc(16 * var(--m)); }
-  .slice__more--bottom { left: calc(268 * var(--m)); top: calc(206 * var(--m)); }
+  .slice__swarm { left: 0; top: 0; height: calc(310 * var(--m)); --k: var(--m); }
   .slice__count { left: calc(12 * var(--m)); top: calc(110 * var(--m)); height: auto; font-size: calc(190 * var(--m)); }
   .slice__title { --ratio: 6.8; position: relative; }
   .slice__text  { width: auto; margin-top: 24px; font-size: 17px; }
@@ -533,4 +537,5 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .slice__sq { transition: none; }
 }
