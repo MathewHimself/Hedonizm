@@ -39,7 +39,7 @@
 
 | Файл | Слой в Figma |
 |------|--------------|
-| `hero-hands.png` | 00 — Hero → Image (Две руки тянутся друг к другу) |
+| `hero-hands.jpg` | 00 — Hero → Image (Две руки тянутся друг к другу) |
 | `want-negroni.jpg` | 01 → Image (Бутылка негрони…) |
 | `want-hands.jpg` | 01 → Image (Сплетённые руки…) |
 | `want-tire.jpg` | 01 → Image (Гоночная шина…) |
