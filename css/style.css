@@ -403,19 +403,19 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .duty.is-armed .duty__list li.is-visible {
   opacity: var(--o, 1);
   transform: none;
-  transition: opacity .35s ease, transform .5s cubic-bezier(.2, .8, .2, 1);
+  transition: opacity .245s ease, transform .35s cubic-bezier(.2, .8, .2, 1);
 }
 .duty.is-armed .duty__list li.is-checked::before {
   background-color: var(--yellow);
   background-image: url("../images/duty-check.svg");
   border-color: var(--yellow);
   transform: scale(1);
-  animation: duty-check-pop .45s cubic-bezier(.2, .9, .25, 1.35) both;
+  animation: duty-check-pop .315s cubic-bezier(.2, .9, .25, 1.35) both;
 }
 .duty.is-armed .duty__undone s::after { transform: scaleX(0); }
 .duty.is-armed .duty__undone.is-struck s::after {
   transform: scaleX(1);
-  transition: transform .55s cubic-bezier(.65, 0, .25, 1);
+  transition: transform .385s cubic-bezier(.65, 0, .25, 1);
 }
 .duty.is-armed :is(.duty__lead, .duty__aside .quote) {
   opacity: 0;
