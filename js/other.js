@@ -5,13 +5,18 @@
   if (!block || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const tags = [...block.querySelectorAll('.other__tags li')];
-  if (!tags.length) return;
+  const quote = block.querySelector('.other__quote blockquote');
+  if (!tags.length || !quote) return;
 
   tags.forEach(tag => {
     tag.dataset.text = tag.textContent.trim();
     tag.textContent = '';
   });
-  block.classList.add('is-armed');
+  quote.dataset.text = quote.textContent.trim();
+  quote.setAttribute('aria-label', quote.dataset.text);
+  quote.textContent = '';
+  quote.classList.add('longread-motion__copy');
+  block.classList.add('is-armed', 'is-motion-armed');
 
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -27,6 +32,16 @@
     tag.classList.add('is-typed');
   }
 
+  async function typeQuote() {
+    quote.classList.add('is-typing');
+    for (const letter of quote.dataset.text) {
+      quote.textContent += letter;
+      await wait(letter === ' ' ? 24 : 42);
+    }
+    quote.classList.remove('is-typing');
+    quote.classList.add('is-typed');
+  }
+
   new IntersectionObserver((entries, observer) => {
     if (!entries.some(entry => entry.isIntersecting)) return;
     observer.disconnect();
@@ -34,10 +49,15 @@
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
       await wait(2250);
-      for (const tag of tags) {
-        await type(tag);
-        await wait(110);
-      }
+      await Promise.all([
+        (async () => {
+          for (const tag of tags) {
+            await type(tag);
+            await wait(110);
+          }
+        })(),
+        typeQuote(),
+      ]);
     }));
   }, { threshold: .24 }).observe(block);
 })();
