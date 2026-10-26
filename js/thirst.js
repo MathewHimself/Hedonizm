@@ -31,7 +31,6 @@
 
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
-      await wait(1750);
       for (const line of lines) {
         await type(line);
         await wait(100);
