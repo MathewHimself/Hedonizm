@@ -50,12 +50,7 @@
       block.classList.add('is-play');
       await wait(2250);
       await Promise.all([
-        (async () => {
-          for (const tag of tags) {
-            await type(tag);
-            await wait(110);
-          }
-        })(),
+        ...tags.map(type),
         typeQuote(),
       ]);
     }));
