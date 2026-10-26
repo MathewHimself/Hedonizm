@@ -301,22 +301,25 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
    states, so the complete composition stays visible when scripting is unavailable. */
 .other.is-armed .other__img {
   opacity: 0;
-  filter: blur(calc(10 * var(--u)));
-  transform: translateY(calc(120 * var(--u))) scale(.96);
-  will-change: opacity, filter, transform;
+  clip-path: inset(100% 0 0 0);
+  filter: blur(calc(8 * var(--u)));
+  transform: translateY(calc(180 * var(--u))) scale(.97);
+  will-change: opacity, clip-path, filter, transform;
 }
 .other.is-play .other__img {
   opacity: 1;
+  clip-path: inset(0 0 0 0);
   filter: none;
   transform: none;
   transition:
-    opacity .7s ease,
-    filter .9s ease,
-    transform 1s cubic-bezier(.16, 1, .3, 1);
+    opacity .45s ease,
+    clip-path 1.15s cubic-bezier(.22, 1, .36, 1),
+    filter .85s ease,
+    transform 1.15s cubic-bezier(.16, 1, .3, 1);
 }
 .other.is-play .other__img--backpack { transition-delay: .08s; }
-.other.is-play .other__img--cat      { transition-delay: .36s; }
-.other.is-play .other__img--car      { transition-delay: .64s; }
+.other.is-play .other__img--cat      { transition-delay: .5s; }
+.other.is-play .other__img--car      { transition-delay: .92s; }
 
 .other.is-armed .other__tags li {
   opacity: 0;

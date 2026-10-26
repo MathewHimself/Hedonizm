@@ -33,7 +33,7 @@
 
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
-      await wait(1050);
+      await wait(2250);
       for (const tag of tags) {
         await type(tag);
         await wait(110);
