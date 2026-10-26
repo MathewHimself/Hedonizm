@@ -12,6 +12,8 @@
   --paper: #fff;
   --ink-dark: #333;
   --ink-deep: #111;
+  --ink-soft: #1a1a1a;
+  --muted: #8a8a8a;
 
   --f-display: "Open Sans", "Arial Narrow", sans-serif;
   --f-sans: "Inter", system-ui, sans-serif;
@@ -33,7 +35,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 
 /* Open Sans Condensed ExtraBold from the mockup */
 .display, .hero__title, .headline, .measure__label, .measure__bar, .slice__count, .signs__list b,
-.other__tags, .duty__lead {
+.other__tags, .duty__lead, .memory__self b, .thirst__title, .thirst__mark {
   font-family: var(--f-display);
   font-stretch: 75%;
   font-weight: 800;
@@ -295,6 +297,74 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 }
 .body__list span { color: var(--pink); }
 
+/* ---------- 09 — МЫ ЖИВЁМ РАДИ ВОСПОМИНАНИЙ ---------- */
+.memory { --accent: var(--cyan); }
+.memory__img { object-fit: cover; }
+.memory__img--jet  { left: calc(184 * var(--u)); top: calc(100 * var(--u)); width: calc(480 * var(--u)); height: calc(600 * var(--u)); }
+.memory__img--lamb { left: calc(343 * var(--u)); top: calc(722 * var(--u)); width: calc(380 * var(--u)); height: calc(507 * var(--u)); }
+.memory__title { left: calc(593 * var(--u)); top: calc(356 * var(--u)); --size: 80; --gap: 0; line-height: .88; }
+.memory__selves {
+  left: calc(594 * var(--u)); top: calc(523 * var(--u));
+  width: calc(620 * var(--u)); height: calc(102 * var(--u));
+  display: flex; gap: calc(16 * var(--u));
+}
+.memory__self {
+  flex: 1 1 0;
+  display: flex; flex-direction: column; gap: calc(8 * var(--u));
+  padding: calc(20 * var(--u)) calc(24 * var(--u));
+}
+.memory__self b { font-size: calc(26 * var(--u)); line-height: 1.35; }
+.memory__self span {
+  font: 400 max(10px, calc(12 * var(--u)))/1.2 var(--f-mono);
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.memory__self--now   { background: var(--cyan); color: #000; }
+.memory__self--story { border: 1px solid var(--ink-dark); }
+.memory__self--story span { color: var(--muted); }
+.memory__quote { left: calc(754 * var(--u)); top: calc(722 * var(--u)); width: calc(600 * var(--u)); }
+.memory__quote blockquote { font-family: var(--f-sans); }
+.memory__quote figcaption {
+  margin-top: calc(10 * var(--u));
+  font: 700 max(11px, calc(13 * var(--u)))/1.5 var(--f-mono);
+}
+
+/* ---------- 10 — ЖАЖДА ---------- */
+.thirst__title {
+  left: calc(324.5 * var(--u)); top: calc(-5 * var(--u));
+  font-size: calc(240 * var(--u)); line-height: 1;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+}
+.thirst__snake { left: calc(376 * var(--u)); top: calc(120 * var(--u)); width: calc(689 * var(--u)); height: auto; }
+.thirst__text {
+  left: calc(760 * var(--u)); top: calc(760 * var(--u));
+  width: calc(520 * var(--u));
+  display: flex; flex-direction: column; align-items: flex-start; gap: calc(8 * var(--u));
+  font: 400 max(15px, calc(22 * var(--u)))/1.5 var(--f-display);
+  font-stretch: 100%;
+  color: var(--ink-soft);
+}
+.thirst__mark {
+  padding: calc(4 * var(--u)) calc(12 * var(--u)) calc(6 * var(--u));
+  background: var(--green);
+  color: #000;
+  font-size: max(16px, calc(24 * var(--u))); line-height: 1.1;
+}
+
+/* ---------- 11 — ДИСЦИПЛИНИРОВАННЫЕ ПОТРЕБИТЕЛИ ---------- */
+.drill__img { object-fit: cover; }
+.drill__img--face   { left: calc(151 * var(--u)); top: calc(166 * var(--u)); width: calc(447 * var(--u)); height: calc(953 * var(--u)); }
+.drill__img--spikes { left: calc(535 * var(--u)); top: calc(93 * var(--u)); width: calc(319 * var(--u)); height: calc(567 * var(--u)); }
+/* 64px from the mockup runs past the artboard edge; 52 keeps the first line inside */
+.drill__title { left: calc(694 * var(--u)); top: calc(700 * var(--u)); --size: 52; --gap: 8; --pad: 16; --pad-b: 8; --track: -.02em; }
+.drill__text {
+  left: calc(694 * var(--u)); top: calc(960 * var(--u));
+  width: calc(573 * var(--u));
+  font: 400 max(15px, calc(22 * var(--u)))/1.5 var(--f-display);
+  font-stretch: 100%;
+  color: var(--text);
+}
+
 /* ---------- mobile: artboard turns into a flow ---------- */
 @media (max-width: 899px) {
   .stage { --u: 1px; height: auto; padding: 72px var(--gutter); }
@@ -399,6 +469,32 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .body__title { --ratio: 5.3; position: relative; margin-top: -80px; }
   .body__text { width: auto; margin-top: 24px; font-size: 17px; }
   .body__list { margin-top: 24px; }
+
+  /* 09 */
+  .memory .stage { display: flex; flex-direction: column; }
+  .memory__img { height: auto !important; }
+  .memory__img--jet  { width: 78%; aspect-ratio: 480 / 600; }
+  .memory__title { --ratio: 9.8; position: relative; margin-top: -48px; }
+  .memory__selves { width: auto; height: auto; margin-top: 20px; flex-direction: column; gap: 8px; }
+  .memory__self { padding: 14px 18px; gap: 6px; }
+  .memory__self b { font-size: 22px; }
+  .memory__quote { width: auto; margin-top: 32px; }
+  .memory__img--lamb { order: 1; width: 70%; align-self: flex-end; margin-top: 40px; aspect-ratio: 380 / 507; }
+
+  /* 10 */
+  .thirst .stage { display: flex; flex-direction: column; align-items: center; padding-top: 48px; }
+  .thirst__title { font-size: calc((100vw - 2 * var(--gutter)) / 3.4); }
+  .thirst__snake { width: 92%; margin-top: -18%; position: relative; }
+  .thirst__text { width: auto; align-self: stretch; margin-top: 16px; font-size: 17px; }
+  .thirst__mark { font-size: 20px; }
+
+  /* 11 */
+  .drill .stage { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; align-items: start; }
+  .drill__img { width: 100%; height: auto !important; }
+  .drill__img--face   { grid-area: 1 / 1; margin-top: 48px; aspect-ratio: 447 / 953; }
+  .drill__img--spikes { grid-area: 1 / 2; aspect-ratio: 319 / 567; }
+  .drill__title { grid-area: 2 / 1 / 3 / 3; --ratio: 11.6; position: relative; margin-top: -40px; white-space: normal; }
+  .drill__text { grid-area: 3 / 1 / 4 / 3; width: auto; margin-top: 24px; font-size: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
