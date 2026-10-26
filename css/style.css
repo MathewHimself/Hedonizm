@@ -99,6 +99,34 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   color: var(--green);
 }
 
+/* Shared entrance for the longread's visible headings and body copy. Blocks
+   with bespoke sequences (05–07 and 10) keep their own animation scripts. */
+.is-motion-armed .longread-motion__title {
+  opacity: 0;
+  transform: translateY(min(10vw, 150px));
+}
+.is-motion-play .longread-motion__title {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.1s ease, transform 1.8s cubic-bezier(.22, .65, .3, 1);
+}
+.is-motion-armed .longread-motion__copy { opacity: 0; }
+.is-motion-armed .longread-motion__copy:is(.is-typing, .is-typed) {
+  opacity: 1;
+  transition: opacity .12s ease;
+}
+.longread-motion__copy.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: .08em;
+  height: .9em;
+  margin-left: .12em;
+  background: currentColor;
+  vertical-align: -.08em;
+  animation: longread-caret .58s steps(1, end) infinite;
+}
+@keyframes longread-caret { 50% { opacity: 0; } }
+
 /* ---------- 00 — HERO ---------- */
 .hero {
   position: relative;
