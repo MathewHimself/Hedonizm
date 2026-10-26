@@ -518,7 +518,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .thirst.is-play .thirst__title {
   opacity: 1;
   transform: none;
-  transition: opacity .65s ease, transform 1s cubic-bezier(.16, 1, .3, 1);
+  transition: opacity 1.1s ease, transform 1.8s cubic-bezier(.22, .65, .3, 1);
 }
 .thirst.is-armed .thirst__text > span { opacity: 0; }
 .thirst.is-armed .thirst__text > :is(.is-typing, .is-typed) {
