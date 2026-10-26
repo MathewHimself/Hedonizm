@@ -488,7 +488,14 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   letter-spacing: -.03em;
   white-space: nowrap;
 }
-.thirst__snake { left: calc(376 * var(--u)); top: calc(120 * var(--u)); width: calc(689 * var(--u)); height: auto; }
+.thirst__snake {
+  left: calc(376 * var(--u)); top: calc(120 * var(--u));
+  width: calc(689 * var(--u)); height: auto;
+  transform-origin: 50% 50%;
+  animation: thirst-snake-spin 16s linear infinite;
+  will-change: transform;
+}
+@keyframes thirst-snake-spin { to { transform: rotate(1turn); } }
 .thirst__text {
   left: calc(760 * var(--u)); top: calc(760 * var(--u));
   width: calc(520 * var(--u));
@@ -683,4 +690,5 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .slice__sq { transition: none; }
+  .thirst__snake { animation: none; }
 }
