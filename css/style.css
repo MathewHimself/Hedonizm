@@ -236,19 +236,20 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .signs__quote { left: calc(440 * var(--u)); top: calc(788 * var(--u)); width: calc(330 * var(--u)); }
 
 /* ---------- 06 — ТЫ ХОЧЕШЬ ЧУЖОЕ ---------- */
-.other__title { left: calc(142 * var(--u)); top: calc(248 * var(--u)); --size: 96; --pad: 18; --pad-b: 8; }
-.other__quote { left: calc(142 * var(--u)); top: calc(508 * var(--u)); width: calc(412 * var(--u)); }
-.other__quote blockquote { color: var(--ink-deep); }
+.other { background: linear-gradient(to left, var(--paper) 14.964%, var(--paper) 81.461%, #f32fab); }
 .other__img { object-fit: cover; }
-.other__img--car  { left: calc(671 * var(--u)); top: calc(54 * var(--u)); width: calc(490 * var(--u)); height: calc(900 * var(--u)); background: #000; }
-.other__img--face { left: calc(391 * var(--u)); top: calc(757 * var(--u)); width: calc(234 * var(--u)); height: calc(545 * var(--u)); }
+.other__img--car      { left: calc(308 * var(--u)); top: calc(1000 * var(--u)); width: calc(542 * var(--u)); height: calc(511 * var(--u)); }
+.other__img--cat      { left: calc(683 * var(--u)); top: calc(73 * var(--u)); width: calc(689 * var(--u)); height: calc(888 * var(--u)); object-position: bottom; }
+.other__img--backpack { left: calc(706 * var(--u)); top: calc(887 * var(--u)); width: calc(349 * var(--u)); height: calc(369 * var(--u)); object-position: 50% 55%; }
 .other__tags {
-  left: calc(691 * var(--u)); top: calc(319 * var(--u));
-  display: flex; flex-direction: column; align-items: flex-start; gap: calc(12 * var(--u));
-  font-size: calc(60 * var(--u)); line-height: 1;
+  left: calc(506 * var(--u)); top: calc(280 * var(--u));
+  display: flex; flex-direction: column; align-items: flex-start; gap: calc(16.94 * var(--u));
+  font-size: calc(84.7 * var(--u)); line-height: 1;
   color: #000;
 }
-.other__tags li { padding: calc(4 * var(--u)) calc(14 * var(--u)) calc(8 * var(--u)); background: var(--cyan); }
+.other__tags li { padding: calc(5.65 * var(--u)) calc(19.76 * var(--u)) calc(11.3 * var(--u)); background: var(--cyan); }
+.other__quote { left: calc(271 * var(--u)); top: calc(670 * var(--u)); width: calc(412 * var(--u)); }
+.other__quote blockquote { color: var(--ink-deep); }
 
 /* ---------- 07 — СЧАСТЬЕ КАК ОБЯЗАННОСТЬ ---------- */
 .duty__aside {
@@ -281,7 +282,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .duty__undone s { text-decoration-thickness: from-font; }
 
 /* ---------- 08 — ДАЖЕ ТЕЛО — ПРОЕКТ ---------- */
-.body__img { left: calc(445 * var(--u)); top: calc(-6 * var(--u)); width: calc(1121 * var(--u)); height: auto; max-width: none; }
+.body__img { left: calc(206.6 * var(--u)); top: calc(85 * var(--u)); width: calc(1450 * var(--u)); height: auto; max-width: none; }
 .body__title { left: calc(291 * var(--u)); top: calc(470 * var(--u)); --size: 80; --pad-t: 6; --pad-b: 12; }
 .body__text {
   left: calc(291 * var(--u)); top: calc(690 * var(--u));
@@ -301,8 +302,8 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 /* ---------- 09 — МЫ ЖИВЁМ РАДИ ВОСПОМИНАНИЙ ---------- */
 .memory { --accent: var(--cyan); }
 .memory__img { object-fit: cover; }
-.memory__img--jet  { left: calc(184 * var(--u)); top: calc(100 * var(--u)); width: calc(480 * var(--u)); height: calc(600 * var(--u)); }
-.memory__img--lamb { left: calc(343 * var(--u)); top: calc(722 * var(--u)); width: calc(380 * var(--u)); height: calc(507 * var(--u)); }
+.memory__img--caliper { left: calc(128 * var(--u)); top: calc(142 * var(--u)); width: calc(435 * var(--u)); height: calc(580 * var(--u)); }
+.memory__img--dessert { left: calc(323 * var(--u)); top: calc(679 * var(--u)); width: calc(362 * var(--u)); height: calc(543 * var(--u)); }
 .memory__title { left: calc(593 * var(--u)); top: calc(356 * var(--u)); --size: 80; --gap: 0; line-height: .88; }
 .memory__selves {
   left: calc(594 * var(--u)); top: calc(523 * var(--u));
@@ -354,12 +355,11 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 
 /* ---------- 11 — ДИСЦИПЛИНИРОВАННЫЕ ПОТРЕБИТЕЛИ ---------- */
 .drill__img { object-fit: cover; }
-.drill__img--face   { left: calc(151 * var(--u)); top: calc(166 * var(--u)); width: calc(447 * var(--u)); height: calc(953 * var(--u)); }
-.drill__img--spikes { left: calc(535 * var(--u)); top: calc(93 * var(--u)); width: calc(319 * var(--u)); height: calc(567 * var(--u)); }
-/* 64px from the mockup runs past the artboard edge; 52 keeps the first line inside */
-.drill__title { left: calc(694 * var(--u)); top: calc(700 * var(--u)); --size: 52; --gap: 8; --pad: 16; --pad-b: 8; --track: -.02em; }
+.drill__img--face   { left: calc(188 * var(--u)); top: calc(244 * var(--u)); width: calc(447 * var(--u)); height: calc(758 * var(--u)); object-position: top; }
+.drill__img--spikes { left: calc(519 * var(--u)); top: calc(67 * var(--u)); width: calc(233 * var(--u)); height: calc(413 * var(--u)); }
+.drill__title { left: calc(392 * var(--u)); top: calc(499 * var(--u)); --size: 77.94; --gap: 9.74; --pad: 19.49; --pad-t: 4.87; --pad-b: 9.74; --track: -.02em; }
 .drill__text {
-  left: calc(694 * var(--u)); top: calc(960 * var(--u));
+  left: calc(434 * var(--u)); top: calc(1046 * var(--u));
   width: calc(573 * var(--u));
   font: 400 max(15px, calc(22 * var(--u)))/1.5 var(--f-display);
   font-stretch: 100%;
@@ -373,22 +373,22 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   display: flex; align-items: center; justify-content: center;
   font-size: calc(220 * var(--u)); line-height: 1;
   letter-spacing: -.03em;
-  color: var(--cyan);
+  color: var(--ink);
 }
 .final__title s { text-decoration-thickness: from-font; }
 .final__text {
-  left: 0; right: 0; top: calc(550 * var(--u));
-  display: flex; flex-direction: column; align-items: center; gap: calc(10 * var(--u));
+  left: 0; right: 0; top: calc(557 * var(--u));
+  display: flex; flex-direction: column; align-items: center; gap: calc(13 * var(--u));
   text-align: center;
-  font: 600 max(15px, calc(22 * var(--u)))/1.4 var(--f-display);
+  font: 600 max(15px, calc(27.5 * var(--u)))/1.4 var(--f-display);
   font-stretch: 100%;
   color: var(--text);
 }
 .final__mark {
-  padding: calc(6 * var(--u)) calc(16 * var(--u)) calc(8 * var(--u));
+  padding: calc(7.5 * var(--u)) calc(20 * var(--u)) calc(10 * var(--u));
   background: var(--cyan);
   color: #000;
-  font-size: max(15px, calc(22 * var(--u))); line-height: 1.2;
+  font-size: max(15px, calc(27.5 * var(--u))); line-height: 1.2;
   letter-spacing: .02em;
 }
 
@@ -474,12 +474,13 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 
   /* 06 */
   .other .stage { display: grid; grid-template-columns: 1fr 1fr; }
-  .other__title { grid-area: 1 / 1 / 2 / 3; }
-  .other__quote { grid-area: 2 / 1 / 3 / 3; width: auto; margin-top: 32px; }
-  .other__img--car  { grid-area: 3 / 1 / 4 / 3; justify-self: end; width: 80%; height: auto; aspect-ratio: 490 / 900; margin-top: 48px; }
-  .other__tags { grid-area: 3 / 1 / 4 / 3; align-self: start; margin-top: 160px; gap: 8px; font-size: 40px; position: relative; }
+  .other__img { width: 100%; height: auto !important; }
+  .other__img--cat  { grid-area: 1 / 1 / 2 / 3; justify-self: end; width: 86%; aspect-ratio: 689 / 888; }
+  .other__tags { grid-area: 1 / 1 / 2 / 3; align-self: start; margin-top: 30%; gap: 8px; font-size: 40px; position: relative; }
   .other__tags li { padding: 2px 10px 6px; }
-  .other__img--face { grid-area: 4 / 1; width: 90%; height: auto; aspect-ratio: 234 / 545; margin-top: -160px; position: relative; }
+  .other__quote { grid-area: 2 / 1 / 3 / 3; width: auto; margin-top: 32px; }
+  .other__img--car      { grid-area: 3 / 1 / 4 / 3; width: 78%; margin-top: 88px; aspect-ratio: 542 / 511; }
+  .other__img--backpack { grid-area: 3 / 2; justify-self: end; width: 88%; margin-top: 40px; aspect-ratio: 349 / 369; position: relative; }
 
   /* 07 */
   .duty__list { gap: 20px; font-size: 18px; line-height: 1.3; }
@@ -500,13 +501,13 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   /* 09 */
   .memory .stage { display: flex; flex-direction: column; }
   .memory__img { height: auto !important; }
-  .memory__img--jet  { width: 78%; aspect-ratio: 480 / 600; }
+  .memory__img--caliper { width: 78%; aspect-ratio: 435 / 580; }
   .memory__title { --ratio: 9.8; position: relative; margin-top: -48px; }
   .memory__selves { width: auto; height: auto; margin-top: 20px; flex-direction: column; gap: 8px; }
   .memory__self { padding: 14px 18px; gap: 6px; }
   .memory__self b { font-size: 22px; }
   .memory__quote { width: auto; margin-top: 32px; }
-  .memory__img--lamb { order: 1; width: 70%; align-self: flex-end; margin-top: 40px; aspect-ratio: 380 / 507; }
+  .memory__img--dessert { order: 1; width: 70%; align-self: flex-end; margin-top: 40px; aspect-ratio: 362 / 543; }
 
   /* 10 */
   .thirst .stage { display: flex; flex-direction: column; align-items: center; padding-top: 48px; }
@@ -518,8 +519,8 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   /* 11 */
   .drill .stage { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; align-items: start; }
   .drill__img { width: 100%; height: auto !important; }
-  .drill__img--face   { grid-area: 1 / 1; margin-top: 48px; aspect-ratio: 447 / 953; }
-  .drill__img--spikes { grid-area: 1 / 2; aspect-ratio: 319 / 567; }
+  .drill__img--face   { grid-area: 1 / 1; margin-top: 48px; aspect-ratio: 447 / 758; }
+  .drill__img--spikes { grid-area: 1 / 2; aspect-ratio: 233 / 413; }
   .drill__title { grid-area: 2 / 1 / 3 / 3; --ratio: 11.6; position: relative; margin-top: -40px; white-space: normal; }
   .drill__text { grid-area: 3 / 1 / 4 / 3; width: auto; margin-top: 24px; font-size: 17px; }
 
