@@ -222,9 +222,9 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 /* ---------- 05 — МЫ ПОТРЕБЛЯЕМ ЗНАКИ ---------- */
 .signs { --accent: var(--cyan); }
 .signs__receipt { max-width: none; height: auto; }
-.signs__receipt--green  { left: calc(241 * var(--u)); top: calc(-19 * var(--u)); width: calc(431 * var(--u)); }
-.signs__receipt--pink   { left: calc(223 * var(--u)); top: calc(685 * var(--u)); width: calc(337 * var(--u)); }
-.signs__receipt--yellow { left: calc(837 * var(--u)); top: calc(318 * var(--u)); width: calc(426 * var(--u)); }
+.signs__receipt--green  { left: calc(364 * var(--u)); top: calc(-12 * var(--u)); width: calc(489 * var(--u)); }
+.signs__receipt--pink   { left: calc(151 * var(--u)); top: calc(722 * var(--u)); width: calc(337 * var(--u)); }
+.signs__receipt--yellow { left: calc(842 * var(--u)); top: calc(314 * var(--u)); width: calc(359 * var(--u)); }
 .signs__list {
   left: calc(440 * var(--u)); top: calc(478 * var(--u));
   display: flex; flex-direction: column; gap: calc(20 * var(--u));
