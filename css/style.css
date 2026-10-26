@@ -192,7 +192,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   background: linear-gradient(135deg, var(--pink) 0%, var(--pink) 45%, #fff 100%);
   opacity: 0;
   transform: scale(.4) rotate(var(--r, 0deg));
-  transition: opacity .25s ease-out, transform .45s cubic-bezier(.2, 1.5, .4, 1);
+  transition: opacity .13s ease-out, transform .23s cubic-bezier(.2, 1.5, .4, 1);
 }
 .slice__sq.is-on { opacity: 1; transform: none; }
 .slice__sq img { width: 100%; height: 100%; object-fit: contain; }

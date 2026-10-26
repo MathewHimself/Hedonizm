@@ -8,9 +8,8 @@
   if (!swarm || !count) return;
 
   const TOTAL = 10;
-  const STEP = [220, 480];        // ms between two pieces, min–max
-  const HOLD_FULL = 1400;          // pause at 10
-  const HOLD_EMPTY = 900;          // pause at 1
+  const STEP = [110, 240];        // ms between two pieces, min–max
+  const HOLD_EMPTY = 450;          // pause at 1; at 10 it turns back right away
   const mobile = matchMedia('(max-width: 899px)');
   const calm = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -91,10 +90,10 @@
     let wait = rand(...STEP);
     if (rising) {
       show(pick(pieces.filter(p => !p.on)), true);
-      if (visible() === TOTAL) { rising = false; wait = HOLD_FULL; }
+      if (visible() === TOTAL) rising = false;
     } else {
       show(pick(pieces.filter(p => p.on)), false);
-      if (visible() === 1) { rising = true; wait = HOLD_EMPTY; setTimeout(reshuffle, 500); }
+      if (visible() === 1) { rising = true; wait = HOLD_EMPTY; setTimeout(reshuffle, 250); }
     }
     timer = setTimeout(tick, wait);
   }
