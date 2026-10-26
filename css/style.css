@@ -35,7 +35,8 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 
 /* Open Sans Condensed ExtraBold from the mockup */
 .display, .hero__title, .headline, .measure__label, .measure__bar, .slice__count, .signs__list b,
-.other__tags, .duty__lead, .memory__self b, .thirst__title, .thirst__mark {
+.other__tags, .duty__lead, .memory__self b, .thirst__title, .thirst__mark,
+.final__title, .final__mark {
   font-family: var(--f-display);
   font-stretch: 75%;
   font-weight: 800;
@@ -365,6 +366,32 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   color: var(--text);
 }
 
+/* ---------- 12 — ФИНАЛ ---------- */
+.final__title {
+  left: 0; right: 0; top: calc(300 * var(--u));
+  height: calc(200 * var(--u));
+  display: flex; align-items: center; justify-content: center;
+  font-size: calc(220 * var(--u)); line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--cyan);
+}
+.final__title s { text-decoration-thickness: from-font; }
+.final__text {
+  left: 0; right: 0; top: calc(550 * var(--u));
+  display: flex; flex-direction: column; align-items: center; gap: calc(10 * var(--u));
+  text-align: center;
+  font: 600 max(15px, calc(22 * var(--u)))/1.4 var(--f-display);
+  font-stretch: 100%;
+  color: var(--text);
+}
+.final__mark {
+  padding: calc(6 * var(--u)) calc(16 * var(--u)) calc(8 * var(--u));
+  background: var(--cyan);
+  color: #000;
+  font-size: max(15px, calc(22 * var(--u))); line-height: 1.2;
+  letter-spacing: .02em;
+}
+
 /* ---------- mobile: artboard turns into a flow ---------- */
 @media (max-width: 899px) {
   .stage { --u: 1px; height: auto; padding: 72px var(--gutter); }
@@ -495,6 +522,12 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .drill__img--spikes { grid-area: 1 / 2; aspect-ratio: 319 / 567; }
   .drill__title { grid-area: 2 / 1 / 3 / 3; --ratio: 11.6; position: relative; margin-top: -40px; white-space: normal; }
   .drill__text { grid-area: 3 / 1 / 4 / 3; width: auto; margin-top: 24px; font-size: 17px; }
+
+  /* 12 */
+  .final .stage { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .final__title { height: auto; font-size: 140px; }
+  .final__text { gap: 10px; font-size: 15px; }
+  .final__mark { padding: 4px 12px 6px; font-size: 16px; letter-spacing: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
