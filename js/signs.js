@@ -30,7 +30,7 @@
     // let the armed state paint first, or the transitions would be skipped
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
-      await wait(4600);
+      await wait(6300);
       await typeQuote();
     }));
   }, { threshold: .25 }).observe(block);
