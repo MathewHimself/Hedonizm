@@ -490,7 +490,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   vertical-align: -.02em;
   opacity: 0;
 }
-.other__tags li.is-typing::after {
+.other__tags li:is(.is-typing, .is-deleting)::after {
   opacity: 1;
   animation: other-caret .62s steps(1, end) infinite;
 }
@@ -499,12 +499,12 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 /* after the entrance the three objects keep drifting, each at its own pace;
    individual translate/rotate properties stack on top of the entrance transform */
 .other.is-play .other__img { animation: other-drift var(--drift, 5s) ease-in-out var(--drift-delay, 1.8s) infinite alternate; }
-.other.is-play .other__img--backpack { --drift: 3.8s; --drift-delay: 1.4s; --tilt: 3deg;    --lift: -22; }
-.other.is-play .other__img--cat      { --drift: 5.6s; --drift-delay: 1.8s; --tilt: -1.6deg; --lift: -16; }
-.other.is-play .other__img--car      { --drift: 4.6s; --drift-delay: 2.2s; --tilt: 2.2deg;  --lift: -26; }
+.other.is-play .other__img--backpack { --drift: 1.7s; --drift-delay: 1.4s; --tilt: 9deg;  --lift: -70; --sway: 46; }
+.other.is-play .other__img--cat      { --drift: 2.6s; --drift-delay: 1.8s; --tilt: -5deg; --lift: -48; --sway: -38; }
+.other.is-play .other__img--car      { --drift: 2.1s; --drift-delay: 2.2s; --tilt: 7deg;  --lift: -80; --sway: -54; }
 @keyframes other-drift {
-  from { translate: 0 0; rotate: 0deg; }
-  to   { translate: 0 calc(var(--lift) * var(--u)); rotate: var(--tilt); }
+  from { translate: calc(var(--sway) * -.5 * var(--u)) 0; rotate: calc(var(--tilt) * -.4); }
+  to   { translate: calc(var(--sway) * .5 * var(--u)) calc(var(--lift) * var(--u)); rotate: var(--tilt); }
 }
 
 /* ---------- 07 — СЧАСТЬЕ КАК ОБЯЗАННОСТЬ ---------- */

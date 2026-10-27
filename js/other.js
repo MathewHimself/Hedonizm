@@ -1,5 +1,5 @@
 // 06 — «Ты хочешь чужое»: the images enter 3 -> 2 -> 1, then the three
-// labels are typed in sequence. The animation plays once when the block enters.
+// labels keep typing and erasing themselves in a loop while the quote types once.
 (() => {
   const block = document.getElementById('other');
   if (!block || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -32,6 +32,25 @@
     tag.classList.add('is-typed');
   }
 
+  async function erase(tag) {
+    tag.classList.add('is-deleting');
+    while (tag.textContent) {
+      tag.textContent = tag.textContent.slice(0, -1);
+      await wait(40);
+    }
+    // an empty label hides, so no bare cyan stub is left behind
+    tag.classList.remove('is-deleting', 'is-typed');
+  }
+
+  async function loopTags() {
+    while (true) {
+      await Promise.all(tags.map(type));
+      await wait(1300);
+      await Promise.all(tags.map(erase));
+      await wait(450);
+    }
+  }
+
   async function typeQuote() {
     quote.classList.add('is-typing');
     for (const letter of quote.dataset.text) {
@@ -49,10 +68,8 @@
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
       await wait(2250);
-      await Promise.all([
-        ...tags.map(type),
-        typeQuote(),
-      ]);
+      void typeQuote();
+      await loopTags();
     }));
   }, { threshold: .24 }).observe(block);
 })();
