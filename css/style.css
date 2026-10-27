@@ -212,7 +212,9 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .hero__read:hover { background: var(--ink); }
 
 /* ---------- 01 — ТЫ ХОЧЕШЬ ВСЁ ---------- */
-.want, .bought { position: relative; z-index: 2; overflow: visible; }
+/* images may spill over the top and bottom of these sections, but never past the sides:
+   anything wider than the screen makes phone browsers zoom the whole page out */
+.want, .bought { position: relative; z-index: 2; overflow: clip visible; }
 .want .stage, .bought .stage { overflow: visible; }
 .want__carousel {
   /* shifted left; widened by the same amount so the right end stays off screen */
