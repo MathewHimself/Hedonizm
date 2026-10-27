@@ -282,8 +282,27 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .bought__img { object-fit: cover; max-width: none; }
 .bought__img--couple { left: calc(552 * var(--u)); top: calc(220 * var(--u)); width: calc(829 * var(--u)); height: calc(612 * var(--u)); }
 .bought__img--tag    { left: calc(-57 * var(--u)); top: calc(117 * var(--u)); width: calc(575 * var(--u)); height: calc(425 * var(--u)); }
-.bought__title { left: calc(62 * var(--u)); top: calc(573 * var(--u)); --size: 120; --pad: 20; --track: -.02em; }
-.bought__quote { left: calc(62 * var(--u)); top: calc(848 * var(--u)); width: calc(520 * var(--u)); }
+.bought__chaos { inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
+.bought.is-chaos .bought__img { opacity: 0; }
+.bought__chaos-card {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: var(--w); height: auto;
+  max-width: none;
+  opacity: 0;
+  object-fit: cover;
+  will-change: opacity, transform;
+  animation: bought-chaos-pop var(--life) cubic-bezier(.2, .75, .25, 1) both;
+}
+@keyframes bought-chaos-pop {
+  0%   { opacity: 0; transform: translateY(calc(70 * var(--u))) scale(.22) rotate(calc(var(--r) - 7deg)); }
+  14%  { opacity: 1; }
+  38%  { opacity: 1; transform: translateY(0) scale(1.04) rotate(var(--r)); }
+  72%  { opacity: 1; transform: translateY(calc(-12 * var(--u))) scale(1) rotate(var(--r)); }
+  100% { opacity: 0; transform: translateY(calc(-65 * var(--u))) scale(.78) rotate(var(--r2)); }
+}
+.bought__title { left: calc(62 * var(--u)); top: calc(573 * var(--u)); --size: 120; --pad: 20; --track: -.02em; z-index: 20; }
+.bought__quote { left: calc(62 * var(--u)); top: calc(848 * var(--u)); width: calc(520 * var(--u)); z-index: 20; }
 
 /* ---------- 05 — МЫ ПОТРЕБЛЯЕМ ЗНАКИ ---------- */
 .signs { --accent: var(--cyan); }
@@ -796,7 +815,8 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .bought__img--tag    { order: -1; width: 80%; margin-left: calc(-1 * var(--gutter)); aspect-ratio: 575 / 425; }
   .bought__img--couple { width: 90%; justify-self: end; margin-top: -24px; aspect-ratio: 829 / 612; }
   .bought__title { --ratio: 6.7; position: relative; margin-top: -40px; }
-  .bought__quote { width: auto; margin-top: 32px; }
+  .bought__quote { width: auto; margin-top: 32px; position: relative; }
+  .bought__chaos { position: absolute; inset: 0; }
 
   /* 05 */
   .signs .stage {
