@@ -11,7 +11,7 @@
     { id: 'bought', title: '.bought__title', copy: ['.bought__quote blockquote'] },
     { id: 'body', title: '.body__title', copy: ['.body__text'] },
     { id: 'memory', title: '.memory__title', copy: ['.memory__quote blockquote'] },
-    { id: 'drill', title: '.drill__title', copy: ['.drill__text'] },
+    { id: 'drill', title: '.drill__title', copy: ['.drill__text'], specialTitle: true },
     { id: 'final', title: '.final__title', copy: ['.final__text p'] },
   ];
 
@@ -28,7 +28,7 @@
     target.classList.add('is-typed');
   }
 
-  sequences.forEach(({ id, title: titleSelector, copy: copySelectors }) => {
+  sequences.forEach(({ id, title: titleSelector, copy: copySelectors, specialTitle = false }) => {
     const section = document.getElementById(id);
     const title = section && section.querySelector(titleSelector);
     if (!section || !title) return;
@@ -37,7 +37,7 @@
     const bodyParameters = id === 'body'
       ? [...section.querySelectorAll('.body__list :is(.body__metric, .body__status)')]
       : [];
-    title.classList.add('longread-motion__title');
+    if (!specialTitle) title.classList.add('longread-motion__title');
     copies.forEach(target => {
       target.classList.add('longread-motion__copy');
       target.dataset.text = target.textContent.trim();

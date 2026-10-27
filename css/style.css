@@ -731,6 +731,75 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   font-stretch: 100%;
   color: var(--text);
 }
+.drill .stage::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: max(2px, calc(3 * var(--u)));
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 4%, var(--cyan) 28%, var(--cyan) 72%, transparent 96%);
+  box-shadow: 0 0 calc(18 * var(--u)) color-mix(in srgb, var(--cyan) 70%, transparent);
+}
+.drill.is-motion-play .stage::after {
+  animation: drill-scan 3.2s linear 1.2s infinite;
+}
+.drill.is-motion-armed .drill__img {
+  opacity: 0;
+  scale: .88;
+  will-change: opacity, scale, clip-path, transform;
+}
+.drill.is-motion-armed .drill__img--face { clip-path: inset(0 100% 0 0); }
+.drill.is-motion-armed .drill__img--spikes { clip-path: inset(100% 0 0 0); }
+.drill.is-motion-play .drill__img--face {
+  animation:
+    drill-image-reveal 1.15s cubic-bezier(.16, 1, .3, 1) .08s forwards,
+    drill-face-tension 2.8s ease-in-out 1.3s infinite alternate;
+}
+.drill.is-motion-play .drill__img--spikes {
+  animation:
+    drill-image-reveal .95s cubic-bezier(.16, 1, .3, 1) .38s forwards,
+    drill-spike-tension 1.25s steps(2, end) 1.35s infinite alternate;
+}
+.drill.is-motion-armed .drill__title > * {
+  opacity: 0;
+  transform: translateX(var(--drill-from, calc(-120 * var(--u))));
+  will-change: opacity, transform;
+}
+.drill.is-motion-armed .drill__title > :nth-child(2) { --drill-from: calc(120 * var(--u)); }
+.drill.is-motion-play .drill__title > * {
+  animation: drill-line-in .68s cubic-bezier(.16, 1, .3, 1) forwards;
+}
+.drill.is-motion-play .drill__title > :nth-child(1) { animation-delay: .22s; }
+.drill.is-motion-play .drill__title > :nth-child(2) { animation-delay: .48s; }
+.drill.is-motion-play .drill__title > :nth-child(3) {
+  animation: drill-stamp-in .58s cubic-bezier(.2, 1.35, .35, 1) .78s forwards;
+}
+@keyframes drill-image-reveal {
+  to { opacity: 1; scale: 1; clip-path: inset(0); }
+}
+@keyframes drill-line-in {
+  to { opacity: 1; transform: none; }
+}
+@keyframes drill-stamp-in {
+  0% { opacity: 0; transform: scale(1.45) rotate(-2deg); }
+  70% { opacity: 1; transform: scale(.96) rotate(.4deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes drill-face-tension {
+  from { transform: scale(.985) translateX(calc(-3 * var(--u))); }
+  to { transform: scale(1.025) translateX(calc(4 * var(--u))); }
+}
+@keyframes drill-spike-tension {
+  from { transform: translateY(calc(-7 * var(--u))) rotate(-.8deg); }
+  to { transform: translateY(calc(7 * var(--u))) rotate(.8deg); }
+}
+@keyframes drill-scan {
+  0% { opacity: 0; transform: translateY(calc(-10 * var(--u))); }
+  8%, 92% { opacity: .32; }
+  100% { opacity: 0; transform: translateY(calc(1358 * var(--u))); }
+}
 
 /* ---------- 12 — ФИНАЛ ---------- */
 .final__title {
