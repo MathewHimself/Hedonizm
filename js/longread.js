@@ -34,9 +34,17 @@
     if (!section || !title) return;
 
     const copies = copySelectors.flatMap(selector => [...section.querySelectorAll(selector)]);
+    const bodyParameters = id === 'body'
+      ? [...section.querySelectorAll('.body__list :is(.body__metric, .body__status)')]
+      : [];
     title.classList.add('longread-motion__title');
     copies.forEach(target => {
       target.classList.add('longread-motion__copy');
+      target.dataset.text = target.textContent.trim();
+      target.setAttribute('aria-label', target.dataset.text);
+      target.textContent = '';
+    });
+    bodyParameters.forEach(target => {
       target.dataset.text = target.textContent.trim();
       target.setAttribute('aria-label', target.dataset.text);
       target.textContent = '';
@@ -55,10 +63,14 @@
           (async () => {
             await wait(950);
             for (const parameter of parameters) {
-              parameter.querySelector('.body__metric')?.classList.add('is-visible');
-              await wait(420);
-              parameter.querySelector('.body__status')?.classList.add('is-visible');
-              await wait(520);
+              const metric = parameter.querySelector('.body__metric');
+              const status = parameter.querySelector('.body__status');
+              metric?.classList.add('is-visible');
+              if (metric) await type(metric);
+              await wait(140);
+              status?.classList.add('is-visible');
+              if (status) await type(status);
+              await wait(260);
             }
           })();
         }
