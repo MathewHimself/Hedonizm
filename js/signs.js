@@ -1,6 +1,5 @@
-// 05 — «Мы потребляем знаки»: arms the entrance (styles in style.css) and plays it
-// once when the block scrolls into view. Without JS, or with reduced motion,
-// the block simply shows its final state.
+// 05 — «Мы потребляем знаки»: arms the entrance and keeps the quote typing
+// forwards and backwards. Without JS or with reduced motion, the final state stays visible.
 (() => {
   const block = document.getElementById('signs');
   if (!block || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -14,14 +13,23 @@
   block.classList.add('is-armed', 'is-motion-armed');
 
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-  async function typeQuote() {
-    quote.classList.add('is-typing');
-    for (const letter of quote.dataset.text) {
-      quote.textContent += letter;
-      await wait(letter === ' ' ? 24 : 42);
+  async function loopQuote() {
+    while (true) {
+      quote.classList.remove('is-typed');
+      quote.classList.add('is-typing');
+      for (const letter of quote.dataset.text) {
+        quote.textContent += letter;
+        await wait(letter === ' ' ? 24 : 42);
+      }
+      await wait(900);
+
+      while (quote.textContent) {
+        quote.textContent = quote.textContent.slice(0, -1);
+        await wait(55);
+      }
+      quote.classList.remove('is-typing');
+      await wait(650);
     }
-    quote.classList.remove('is-typing');
-    quote.classList.add('is-typed');
   }
 
   new IntersectionObserver((entries, seen) => {
@@ -31,7 +39,7 @@
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
       await wait(6300);
-      await typeQuote();
+      await loopQuote();
     }));
   }, { threshold: .25 }).observe(block);
 })();
