@@ -137,9 +137,9 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   isolation: isolate;
   z-index: 3;
   background: none;   /* block 01's carousel shows through underneath the hands */
-  /* the whole composition sits this much above centre; kept small enough that the
-     upper hand doesn't hit the top of the page */
-  --hero-lift: calc(64 * var(--u));
+  /* the whole composition sits this much above centre; kept small so the upper hand
+     leaves a band of black above it */
+  --hero-lift: calc(10 * var(--u));
 }
 /* translate stacks on the hands' entrance transform; the copy is lifted with a margin instead,
    since a transform would open a stacking context and drop «Читать» under the fingers */
