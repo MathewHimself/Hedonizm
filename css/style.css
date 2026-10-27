@@ -201,6 +201,8 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .hero__read:hover { background: var(--ink); }
 
 /* ---------- 01 — ТЫ ХОЧЕШЬ ВСЁ ---------- */
+.want, .bought { position: relative; z-index: 2; overflow: visible; }
+.want .stage, .bought .stage { overflow: visible; }
 .want__carousel {
   left: -10%; top: calc(80 * var(--u));
   width: 120%; height: calc(720 * var(--u));
@@ -324,7 +326,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .bought__img { object-fit: cover; max-width: none; }
 .bought__img--couple { left: calc(552 * var(--u)); top: calc(220 * var(--u)); width: calc(829 * var(--u)); height: calc(612 * var(--u)); }
 .bought__img--tag    { left: calc(-57 * var(--u)); top: calc(117 * var(--u)); width: calc(575 * var(--u)); height: calc(425 * var(--u)); }
-.bought__chaos { inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
+.bought__chaos { inset: 0; overflow: visible; pointer-events: none; z-index: 1; }
 .bought.is-chaos .bought__img { opacity: 0; }
 .bought__chaos-card {
   position: absolute;
