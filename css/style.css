@@ -235,6 +235,19 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 @keyframes want-carousel-scroll { to { transform: translateX(-50%); } }
 .want__title { left: calc(618 * var(--u)); top: calc(363 * var(--u)); z-index: 2; }
 .want__quote { left: calc(618 * var(--u)); top: calc(745 * var(--u)); width: calc(560 * var(--u)); }
+/* typed headline (js/want.js): empty lines keep their height, the marker hides while empty */
+.want.is-type-armed .want__title :is(.headline__line, .headline__mark):empty::before { content: "\200b"; }
+.want.is-type-armed .want__title .headline__mark:empty { visibility: hidden; }
+.want__title :is(.is-typing, .is-deleting)::after {
+  content: "";
+  display: inline-block;
+  width: .055em;
+  height: .78em;
+  margin-left: .04em;
+  background: currentColor;
+  vertical-align: .02em;
+  animation: longread-caret .58s steps(1, end) infinite;
+}
 
 /* ---------- 02 — МЕРКА ЭПИКУРА ---------- */
 .measure__label {
