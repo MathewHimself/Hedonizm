@@ -52,14 +52,14 @@
     section.classList.add('is-motion-armed');
 
     if (id === 'memory') {
-      const imageObserver = new IntersectionObserver(entries => {
+      const materialObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          imageObserver.unobserve(entry.target);
+          materialObserver.unobserve(entry.target);
           requestAnimationFrame(() => entry.target.classList.add('is-materialized'));
         });
       }, { threshold: .01 });
-      section.querySelectorAll('.memory__img').forEach(image => imageObserver.observe(image));
+      section.querySelectorAll('.memory__img, .memory__self').forEach(element => materialObserver.observe(element));
     }
 
     new IntersectionObserver((entries, observer) => {
