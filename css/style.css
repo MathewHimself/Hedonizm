@@ -818,12 +818,12 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .drill.is-motion-play .drill__img--face {
   animation:
     drill-image-reveal 1.15s cubic-bezier(.16, 1, .3, 1) .08s forwards,
-    drill-face-tension 2.8s ease-in-out 1.3s infinite alternate;
+    drill-face-tension 1.3s ease-in-out 1.3s infinite alternate;
 }
 .drill.is-motion-play .drill__img--spikes {
   animation:
     drill-image-reveal .95s cubic-bezier(.16, 1, .3, 1) .38s forwards,
-    drill-spike-tension 1.25s steps(2, end) 1.35s infinite alternate;
+    drill-spike-tension .62s steps(3, end) 1.35s infinite alternate;
 }
 .drill.is-motion-armed .drill__title > * {
   opacity: 0;
@@ -851,12 +851,12 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   100% { opacity: 1; transform: none; }
 }
 @keyframes drill-face-tension {
-  from { transform: scale(.985) translateX(calc(-3 * var(--u))); }
-  to { transform: scale(1.025) translateX(calc(4 * var(--u))); }
+  from { transform: scale(.94) translate(calc(-22 * var(--u)), calc(10 * var(--u))) rotate(-2.2deg); filter: saturate(1) contrast(1); }
+  to   { transform: scale(1.08) translate(calc(24 * var(--u)), calc(-14 * var(--u))) rotate(2deg); filter: saturate(1.45) contrast(1.12); }
 }
 @keyframes drill-spike-tension {
-  from { transform: translateY(calc(-7 * var(--u))) rotate(-.8deg); }
-  to { transform: translateY(calc(7 * var(--u))) rotate(.8deg); }
+  from { transform: translate(calc(-14 * var(--u)), calc(-30 * var(--u))) rotate(-4deg) scale(.97); }
+  to   { transform: translate(calc(16 * var(--u)), calc(30 * var(--u))) rotate(4.5deg) scale(1.05); }
 }
 @keyframes drill-scan {
   0% { opacity: 0; transform: translateY(calc(-10 * var(--u))); }
