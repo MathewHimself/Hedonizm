@@ -38,7 +38,7 @@
     // let the armed state paint first, or the transitions would be skipped
     requestAnimationFrame(() => requestAnimationFrame(async () => {
       block.classList.add('is-play');
-      await wait(6300);
+      await wait(3000);   // the list rows finish at ~2.9s (see --row in style.css)
       await loopQuote();
     }));
   }, { threshold: .25 }).observe(block);
