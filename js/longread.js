@@ -51,6 +51,17 @@
     });
     section.classList.add('is-motion-armed');
 
+    if (id === 'memory') {
+      const imageObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          imageObserver.unobserve(entry.target);
+          requestAnimationFrame(() => entry.target.classList.add('is-materialized'));
+        });
+      }, { threshold: .01 });
+      section.querySelectorAll('.memory__img').forEach(image => imageObserver.observe(image));
+    }
+
     new IntersectionObserver((entries, observer) => {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();
