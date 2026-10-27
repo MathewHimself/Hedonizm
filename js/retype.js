@@ -1,10 +1,10 @@
-// 01 — «Ты хочешь всё»: the headline types itself line by line and erases itself
-// back, in a loop. Runs only while the block is on screen.
-(() => {
-  const block = document.getElementById('want');
+// Headlines that type themselves line by line and erase themselves back, in a loop:
+// 01 «Ты хочешь всё_» and 08 «Даже тело — проект». Each loop runs only while its block is on screen.
+['want', 'body'].forEach(id => {
+  const block = document.getElementById(id);
   if (!block || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const title = block.querySelector('.want__title');
+  const title = block.querySelector('.headline');
   const parts = title ? [...title.querySelectorAll('.headline__line, .headline__mark')] : [];
   if (!parts.length) return;
 
@@ -58,4 +58,4 @@
     if (running && wake) { wake(); wake = null; }
     if (running && !started) { started = true; void loop(); }
   }, { threshold: .2 }).observe(block);
-})();
+});

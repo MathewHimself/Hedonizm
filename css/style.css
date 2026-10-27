@@ -236,10 +236,11 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 @keyframes want-carousel-scroll { to { transform: translateX(-50%); } }
 .want__title { left: calc(618 * var(--u)); top: calc(363 * var(--u)); z-index: 2; }
 .want__quote { left: calc(618 * var(--u)); top: calc(745 * var(--u)); width: calc(560 * var(--u)); }
-/* typed headline (js/want.js): empty lines keep their height, the marker hides while empty */
-.want.is-type-armed .want__title :is(.headline__line, .headline__mark):empty::before { content: "\200b"; }
-.want.is-type-armed .want__title .headline__mark:empty { visibility: hidden; }
-.want__title :is(.is-typing, .is-deleting)::after {
+/* retyped headlines (js/retype.js, blocks 01 and 08): empty lines keep their height,
+   the marker hides while empty */
+.is-type-armed .headline :is(.headline__line, .headline__mark):empty::before { content: "\200b"; }
+.is-type-armed .headline .headline__mark:empty { visibility: hidden; }
+.is-type-armed .headline :is(.is-typing, .is-deleting)::after {
   content: "";
   display: inline-block;
   width: .055em;
@@ -620,6 +621,12 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   transition:
     opacity 1s ease .5s,
     transform 1.65s cubic-bezier(.16, 1, .3, 1) .5s;
+}
+/* after rising in, the figure keeps floating; translate/rotate stack on the entrance transform */
+.body.is-motion-play .body__img { animation: body-float 3.6s ease-in-out 2.2s infinite alternate; }
+@keyframes body-float {
+  from { translate: calc(-24 * var(--u)) calc(30 * var(--u)); rotate: -1.6deg; }
+  to   { translate: calc(30 * var(--u)) calc(-70 * var(--u)); rotate: 2deg; }
 }
 .body.is-motion-armed .body__list :is(.body__metric, .body__status) {
   display: inline-block;
