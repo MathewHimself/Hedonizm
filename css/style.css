@@ -132,9 +132,19 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   position: relative;
   min-height: 100svh;
   display: grid; place-items: center;
-  overflow: hidden;
+  /* hands may spill over the bottom edge onto block 01; only the sides are clipped */
+  overflow: clip visible;
   isolation: isolate;
+  z-index: 3;
+  background: none;   /* block 01's carousel shows through underneath the hands */
+  /* the whole composition sits this much above centre; kept small enough that the
+     upper hand doesn't hit the top of the page */
+  --hero-lift: calc(64 * var(--u));
 }
+/* translate stacks on the hands' entrance transform; the copy is lifted with a margin instead,
+   since a transform would open a stacking context and drop «Читать» under the fingers */
+.hero__hand { translate: 0 calc(-1 * var(--hero-lift)); }
+.hero__content { margin-top: calc(-2 * var(--hero-lift)); }
 .hero__hand {
   position: absolute;
   z-index: 2;
@@ -910,6 +920,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .quote--mono figcaption { font-size: 12px; }
 
   /* hero */
+  .hero { --hero-lift: 48px; }
   .hero__content { gap: 8px; padding: 0 var(--gutter) 24px; }
   .hero__title { font-size: calc((100vw - 2 * var(--gutter)) / 4.6); }
   .hero__read { padding: 6px 16px 8px; font-size: 24px; }
