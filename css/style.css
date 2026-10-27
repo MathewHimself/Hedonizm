@@ -204,7 +204,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .want, .bought { position: relative; z-index: 2; overflow: visible; }
 .want .stage, .bought .stage { overflow: visible; }
 .want__carousel {
-  left: -25%; top: calc(80 * var(--u));
+  left: -10%; top: calc(80 * var(--u));
   width: 120%; height: calc(720 * var(--u));
   overflow: visible;
   transform: rotate(-30deg);
@@ -214,6 +214,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   display: flex;
   width: max-content;
   height: 100%;
+  translate: -15vw 0;
   animation: want-carousel-scroll 4s linear infinite;
   will-change: transform;
 }
@@ -894,7 +895,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .want__carousel {
     width: calc(150% + 2 * var(--gutter));
     height: 620px;
-    margin-left: calc(-40% - var(--gutter));
+    margin-left: calc(-25% - var(--gutter));
   }
   .want__set { gap: 14px; padding-right: 14px; }
   .want__set img:nth-child(1) { width: 270px; height: 520px; }
