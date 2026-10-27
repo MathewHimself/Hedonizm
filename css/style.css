@@ -173,7 +173,7 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   display: flex;
   width: max-content;
   height: 100%;
-  animation: want-carousel-scroll 16s linear infinite;
+  animation: want-carousel-scroll 8s linear infinite;
   will-change: transform;
 }
 .want__set {
