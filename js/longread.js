@@ -49,6 +49,20 @@
 
       requestAnimationFrame(() => requestAnimationFrame(async () => {
         section.classList.add('is-motion-play');
+
+        if (id === 'body') {
+          const parameters = [...section.querySelectorAll('.body__list li')];
+          (async () => {
+            await wait(950);
+            for (const parameter of parameters) {
+              parameter.querySelector('.body__metric')?.classList.add('is-visible');
+              await wait(420);
+              parameter.querySelector('.body__status')?.classList.add('is-visible');
+              await wait(520);
+            }
+          })();
+        }
+
         for (const target of copies) {
           await type(target);
           await wait(100);
