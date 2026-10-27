@@ -164,11 +164,27 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .hero__read:hover { background: var(--ink); }
 
 /* ---------- 01 — ТЫ ХОЧЕШЬ ВСЁ ---------- */
-.want__img { object-fit: cover; }
-.want__img--negroni { left: calc(134 * var(--u)); top: calc(46 * var(--u)); width: calc(414 * var(--u)); height: calc(466 * var(--u)); }
-.want__img--hands   { left: calc(610 * var(--u)); top: calc(46 * var(--u)); width: calc(414 * var(--u)); height: calc(619 * var(--u)); }
-.want__img--tire    { left: calc(1087 * var(--u)); top: calc(46 * var(--u)); width: calc(414 * var(--u)); height: calc(402 * var(--u)); max-width: none; }
-.want__title { left: calc(618 * var(--u)); top: calc(363 * var(--u)); }
+.want__carousel {
+  left: 0; top: calc(46 * var(--u));
+  width: 100%; height: calc(560 * var(--u));
+  overflow: hidden;
+}
+.want__track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: want-carousel-scroll 24s linear infinite;
+  will-change: transform;
+}
+.want__track img {
+  flex: none;
+  width: calc(1680 * var(--u));
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+@keyframes want-carousel-scroll { to { transform: translateX(-50%); } }
+.want__title { left: calc(618 * var(--u)); top: calc(363 * var(--u)); z-index: 2; }
 .want__quote { left: calc(618 * var(--u)); top: calc(745 * var(--u)); width: calc(560 * var(--u)); }
 
 /* ---------- 02 — МЕРКА ЭПИКУРА ---------- */
@@ -731,18 +747,15 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   .hero__read { padding: 6px 16px 8px; font-size: 24px; }
 
   /* 01 */
-  .want .stage {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 12px;
-    align-items: start;
+  .want .stage { display: flex; flex-direction: column; }
+  .want__carousel {
+    width: calc(100% + 2 * var(--gutter));
+    height: 430px;
+    margin-left: calc(-1 * var(--gutter));
   }
-  .want__img { width: 100%; height: auto !important; }
-  .want__img--negroni { grid-area: 1 / 1; aspect-ratio: 414 / 466; }
-  .want__img--hands   { grid-area: 1 / 2 / 3 / 3; margin-top: 40px; aspect-ratio: 414 / 619; }
-  .want__img--tire    { grid-area: 2 / 1; margin-top: 12px; aspect-ratio: 414 / 402; }
-  .want__title { grid-area: 3 / 1 / 4 / 3; margin-top: -40px; position: relative; }
-  .want__quote { grid-area: 4 / 1 / 5 / 3; width: auto; margin-top: 40px; }
+  .want__track img { width: 1290px; }
+  .want__title { position: relative; margin-top: -74px; }
+  .want__quote { width: auto; margin-top: 40px; }
 
   /* 02 */
   .measure__label { font-size: 22px; }
@@ -850,4 +863,5 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   html { scroll-behavior: auto; }
   .slice__sq { transition: none; }
   .thirst__snake { animation: none; }
+  .want__track { animation: none; }
 }
