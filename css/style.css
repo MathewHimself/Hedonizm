@@ -563,6 +563,8 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 /* ---------- 10 — ЖАЖДА ---------- */
 .thirst__title {
   left: calc(324.5 * var(--u)); top: calc(-5 * var(--u));
+  min-width: 3.4em;
+  min-height: 1em;
   font-size: calc(240 * var(--u)); line-height: 1;
   letter-spacing: -.03em;
   white-space: nowrap;
@@ -598,6 +600,16 @@ a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
   opacity: 1;
   transform: none;
   transition: opacity 1.1s ease, transform 1.8s cubic-bezier(.22, .65, .3, 1);
+}
+.thirst__title:is(.is-typing, .is-deleting)::after {
+  content: "";
+  display: inline-block;
+  width: .055em;
+  height: .78em;
+  margin-left: .04em;
+  background: currentColor;
+  vertical-align: .02em;
+  animation: thirst-caret .58s steps(1, end) infinite;
 }
 .thirst.is-armed .thirst__text > span { opacity: 0; }
 .thirst.is-armed .thirst__text > :is(.is-typing, .is-typed) {
